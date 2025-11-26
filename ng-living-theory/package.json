@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint --fix",
-    "example-g01": "npx tsx ./src/app/g-signals/g01-simple-even-without-component.ts"
+    "example-g01": "npx tsx ./src/app/g-signals/g01-simple-even-without-component.ts",
+    "michal": "echo \"Hello world\""
   },
   "private": true,
   "dependencies": {
@@ -35,7 +36,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-prettier": "^5.5.4",
     "jasmine-core": "~5.10.0",
-    "karma": "~6.4.4",
+    "karma": "~7.4.4",
     "karma-chrome-launcher": "~3.2.0",
     "karma-coverage": "~2.2.1",
     "karma-jasmine": "~5.1.0",
