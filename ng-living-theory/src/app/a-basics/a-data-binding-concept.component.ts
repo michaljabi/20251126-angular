@@ -25,7 +25,9 @@ import { Component } from '@angular/core';
         </li>
       </ul>
       <div class="box">
-        <div [title]="myTitle">Najedź na mnie aby zobaczyć tooltip !</div>
+        <div [title]="2 + 3 * 4">
+          Najedź na mnie aby zobaczyć tooltip {{ 2 + 3 * 4 }} !
+        </div>
       </div>
       <div class="box">
         <div class="mb-3">

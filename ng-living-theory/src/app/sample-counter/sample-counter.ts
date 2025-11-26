@@ -12,7 +12,7 @@ export class SampleCounter {
   constructor() {
     setTimeout(() => {
       console.log(this);
-      this.myLuckyNumber = 200;
+      this.myLuckyNumber = 220;
     }, 3000);
   }
 }
