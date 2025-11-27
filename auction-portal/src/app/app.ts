@@ -10,4 +10,7 @@ import { HeaderComponent } from "./header/header.component";
 })
 export class App {
   protected readonly title = signal('auction-portal');
+
+  numberOfItems = 11;
+
 }

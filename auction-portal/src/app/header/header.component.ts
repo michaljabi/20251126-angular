@@ -1,4 +1,4 @@
-import { Component, Input, signal } from '@angular/core';
+import { Component, Input, signal, input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,12 +7,20 @@ import { Component, Input, signal } from '@angular/core';
     <header class="mb-2 p-5 bg-warning">
       <h1>{{ appTitle }}</h1>
       <h6>{{ subTitle() }}</h6>
+      @if(cartItems() !== 0) {
+        masz już {{cartItems()}} elementów w koszyku.
+      } @else {
+        nie masz nic w koszyku
+      }
     </header>
   `,
   styles: ``,
 })
 export class HeaderComponent {
+
   @Input() appTitle = 'Auction Portal!';
+
+  cartItems = input(0)
 
   //protected subTitle = "...znajdziesz zawsze to czego szukasz";
 
