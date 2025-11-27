@@ -71,10 +71,23 @@ export class ADataBindingConceptComponent {
   // UWAGA:
   // KAŻDE POLE używane na widoku HTML — NIE MOŻE być prywatne!
   logic = 'Logiką';
-  myTitle = 'Witaj w Angular';
+  myTitle: string | number = 'Witaj w Angular';
   increment = 0;
 
-  handleButtonClick() {
-    this.increment++;
+  // handleButtonClick() {
+  //   this.increment++;
+  // }
+
+  handleButtonClick(incrementBy = 1) {
+    this.increment += incrementBy;
+
+    return { name: 'Michał', incrementBy };
   }
 }
+
+// Implementacja:
+const myComp = new ADataBindingConceptComponent();
+
+myComp.handleButtonClick();
+
+myComp.handleButtonClick(10);
