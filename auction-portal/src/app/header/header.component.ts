@@ -7,7 +7,7 @@ import { Component, Input, signal, input } from '@angular/core';
     <header class="mb-2 p-5 bg-warning">
       <h1>{{ appTitle }}</h1>
       <h6>{{ subTitle() }}</h6>
-      @if(cartItems() !== 0) {
+      @if(!cartItems()) {
         masz już {{cartItems()}} elementów w koszyku.
       } @else {
         nie masz nic w koszyku

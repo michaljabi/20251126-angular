@@ -15,7 +15,11 @@ import { ChildToParentComponent } from './child-to-parent.component';
       (fruitClicked)="handleFruitClicked($event)"
     />
     @if (choice) {
-      <div class="notification mt-4">
+      <div
+        class="notification mt-4"
+        (mouseover)="choice = ''"
+        (focus)="choice = ''"
+      >
         Kliknięto na
         <span class="has-background-info p-2 has-text-dark has-radius-rounded">
           {{ choice }}

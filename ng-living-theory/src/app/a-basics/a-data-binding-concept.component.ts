@@ -35,7 +35,7 @@ import { Component } from '@angular/core';
             Angular natychmiastowo odpowiada na zmiany: {{ increment }}
           </h6>
         </div>
-        <button class="button" (click)="handleButtonClick()">
+        <button class="button" (click)="handleButtonClick(10)">
           Kliknij po przykładowy event ({{ increment }})
         </button>
       </div>
