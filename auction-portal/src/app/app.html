@@ -1,4 +1,7 @@
 <app-header />
+<app-header appTitle="Moja strona" />
+<app-header [appTitle]="title()" />
+
 <main class="container">
   <router-outlet />
 </main>

@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, Input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +12,7 @@ import { Component, signal } from '@angular/core';
   styles: ``,
 })
 export class HeaderComponent {
-  appTitle = 'Auction Portal!';
+  @Input() appTitle = 'Auction Portal!';
 
   //protected subTitle = "...znajdziesz zawsze to czego szukasz";
 
