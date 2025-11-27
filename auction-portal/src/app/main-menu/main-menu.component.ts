@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 export class MainMenuComponent {
   isMenuOpen = false;
 
-  togglMenu() {
+  toggleMenu() {
     // console.log('!')
     this.isMenuOpen = !this.isMenuOpen;
   }
