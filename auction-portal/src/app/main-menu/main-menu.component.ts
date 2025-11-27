@@ -8,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class MainMenuComponent {
   isMenuOpen = false;
+
+  togglMenu() {
+    // console.log('!')
+    this.isMenuOpen = !this.isMenuOpen;
+  }
 }
