@@ -3,7 +3,7 @@ import { AuctionsPageComponent } from './auctions/auctions-page.component';
 // import { HeaderComponent } from './header/header.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/aucitons', pathMatch: 'full' },
-  { path: 'aucitons', component: AuctionsPageComponent },
+  { path: '', redirectTo: '/auctions', pathMatch: 'full' },
+  { path: 'auctions', component: AuctionsPageComponent },
   // { path: '**', component: HeaderComponent }
 ];

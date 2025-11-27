@@ -1,5 +1,6 @@
 //import { JsonPipe, UpperCasePipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
+import { RouterLink } from "@angular/router";
 
 type MyString = string;
 
@@ -17,7 +18,7 @@ interface MenuItem {
 
 @Component({
   selector: 'app-main-menu',
-  imports: [/*JsonPipe, UpperCasePipe*/], // wyjaśnienie Pipes.
+  imports: [RouterLink], // wyjaśnienie Pipes.
   templateUrl: './main-menu.component.html',
   styles: ``,
 })
@@ -28,7 +29,7 @@ export class MainMenuComponent {
   isMenuOpenSn = signal(false);
 
   menuItems: MenuItem[] = [
-    { title: 'Aukcje', link: '/aucitons' },
+    { title: 'Aukcje', link: '/auctions' },
     {
       title: 'Promocje',
       link: '/promotions',
