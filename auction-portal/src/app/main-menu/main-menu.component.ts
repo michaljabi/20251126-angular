@@ -1,8 +1,23 @@
+//import { JsonPipe, UpperCasePipe } from '@angular/common';
 import { Component, signal } from '@angular/core';
+
+type MyString = string;
+
+type Money = string | number;
+
+type MItem = {
+  title: string;
+  link: string;
+};
+
+interface MenuItem {
+  title: string;
+  link: string;
+}
 
 @Component({
   selector: 'app-main-menu',
-  imports: [],
+  imports: [/*JsonPipe, UpperCasePipe*/], // wyjaśnienie Pipes.
   templateUrl: './main-menu.component.html',
   styles: ``,
 })
@@ -12,6 +27,18 @@ export class MainMenuComponent {
   // Sn jest dodane tylko dla tego że powyżej używam już isMenuOpen
   isMenuOpenSn = signal(false);
 
+  menuItems: MenuItem[] = [
+    { title: 'Aukcje', link: '/aucitons' },
+    {
+      title: 'Promocje',
+      link: '/promotions',
+    },
+    {
+      title: 'Podpowiadamy',
+      link: '/advices',
+    },
+  ];
+
   toggleMenu() {
     // console.log('!')
     this.isMenuOpen = !this.isMenuOpen;
@@ -20,7 +47,7 @@ export class MainMenuComponent {
     // this.isMenuOpenSn.set(true)
 
     // jeśli chcemy odczytać wartość sygnału
-    console.log(this.isMenuOpenSn())
+    console.log(this.isMenuOpenSn());
 
     // takie podejście jest akceptowalne:
     // this.isMenuOpenSn.set(!this.isMenuOpenSn())
