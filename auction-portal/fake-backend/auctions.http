@@ -1,0 +1,18 @@
+### Get All auctions
+GET http://localhost:3000/auctions
+
+
+### Get one Auction
+GET http://localhost:3000/auctions/3
+
+
+### Add one Auction
+
+POST http://localhost:3000/auctions
+Content-Type: application/json
+
+{
+    "title": "Krowa",
+    "imgUrl": "https://picsum.photos/id/200/600/600",
+    "price": 300
+}
