@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-auction-page',
-  imports: [SharedModule, ReactiveFormsModule, NgStyle, JsonPipe],
+  imports: [SharedModule, ReactiveFormsModule, NgStyle],
   template: `
     <section class="mt-2 row">
       <div class="col-6">
