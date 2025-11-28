@@ -41,7 +41,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
                   <fa-icon icon="tag"></fa-icon>
                 </span>
               </div>
-              <input id="auctionPrice" type="number" name="price" class="form-control" />
+              <input formControlName="price" id="auctionPrice" type="number" name="price" class="form-control" />
             </div>
           </div>
 
@@ -53,7 +53,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
                   <fa-icon icon="image"></fa-icon>
                 </span>
               </div>
-              <input id="img" type="number" name="imgUrl" class="form-control" />
+              <input formControlName="imgId" id="img" type="number" name="imgUrl" class="form-control" />
             </div>
           </div>
 
@@ -65,6 +65,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
                 rows="5"
                 class="form-control"
                 name="description"
+                formControlName="description"
               ></textarea>
             </div>
           </div>
@@ -84,8 +85,10 @@ export class AddAuctionPageComponent {
   // formularz budujemy tutaj:
 
   auctionForm = this.fb.group({
-    title: ['Domyślny tutuł', Validators.required],
-    imgId: [67],
+    title: ['', Validators.required],
+    imgId: [67, [Validators.min(1), Validators.max(1080)]],
+    price: [0, Validators.required],
+    description: [''],
   });
 
   handleAuctionSubmit() {
