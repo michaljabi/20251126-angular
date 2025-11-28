@@ -1,27 +1,26 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { AuctionsResourceService } from './auctions-resource.service';
 import { AuctionItem } from './auction-item';
-import { JsonPipe } from '@angular/common';
+import { AuctionCardComponent } from './auction-card/auction-card.component';
 
 @Component({
-  imports: [JsonPipe],
+  imports: [AuctionCardComponent],
   template: `
     <section>
       <h2>Lista naszych aukcji</h2>
       <div class="row">
         <div class="col-12">
-          @let errorM = errorMessage();
-          @if(errorM) {
-            <div class="alert alert-danger">Niestet wystąpił błąd... {{ errorM }}</div>
+          @let errorM = errorMessage(); @if(errorM) {
+          <div class="alert alert-danger">Niestet wystąpił błąd... {{ errorM }}</div>
           } @if(isLoading) {
-            <div class="alert alert-info">Ładuje aukcje...</div>
+          <div class="alert alert-info">Ładuje aukcje...</div>
           }
         </div>
-        @for(auction of auctionItems; track auction.id) {
-          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-            {{ auction | json }}
-            <!-- tutaj daj komponent do wyświetlania jednej aukcji -->
-          </div>
+        @for(au of auctionItems; track au.id) {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          <!-- tutaj daj komponent do wyświetlania jednej aukcji -->
+          <app-auction-card [auction]="au" />
+        </div>
         }
       </div>
     </section>
