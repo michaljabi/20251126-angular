@@ -7,8 +7,8 @@ import {ValidationErrors} from '@angular/forms';
   template: `
     @if(errors) {
       <div class="alert alert-danger">
-        {{ errors['min'] ? 'Minimalna cena to '+ errors['min']['min'] +' zł' : '' }}
-        {{ errors['max'] ? 'Maksymalna cena to '+ + errors['max']['max']  +' zł' : '' }}
+        {{ errors['min'] ? 'Minimalne ID zdjęcia to '+ errors['min']['min'] : '' }}
+        {{ errors['max'] ? 'Maksymalna ID zdjęcia to '+ + errors['max']['max'] : '' }}
         {{ errors['required'] ? 'Pole jest wymagane' : '' }}
         {{ errors['minlength'] ? 'Nazwa musi zawierać ' + errors['minlength']['requiredLength'] + ' znaków' : '' }}
       </div>
