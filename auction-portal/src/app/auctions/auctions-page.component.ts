@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { AuctionsResourceService } from './auctions-resource.service';
 import { AuctionItem } from './auction-item';
 import { JsonPipe } from '@angular/common';
@@ -10,16 +10,18 @@ import { JsonPipe } from '@angular/common';
       <h2>Lista naszych aukcji</h2>
       <div class="row">
         <div class="col-12">
-          @if(errorMessage) {
-          <div class="alert alert-danger">Niestet wystąpił błąd... {{ errorMessage }}</div>
+          @let errorM = errorMessage();
+          @if(errorM) {
+            <div class="alert alert-danger">Niestet wystąpił błąd... {{ errorM }}</div>
           } @if(isLoading) {
-          <div class="alert alert-info">Ładuje aukcje...</div>
+            <div class="alert alert-info">Ładuje aukcje...</div>
           }
         </div>
         @for(auction of auctionItems; track auction.id) {
-        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-          {{ auction | json }}
-        </div>
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+            {{ auction | json }}
+            <!-- tutaj daj komponent do wyświetlania jednej aukcji -->
+          </div>
         }
       </div>
     </section>
@@ -30,7 +32,7 @@ export class AuctionsPageComponent implements OnInit {
   private readonly auctionResourceService = inject(AuctionsResourceService);
   auctionItems: AuctionItem[] = [];
   isLoading = false;
-  errorMessage = '';
+  errorMessage = signal('');
 
   ngOnInit(): void {
     // tutaj pobieramy dane
@@ -39,6 +41,7 @@ export class AuctionsPageComponent implements OnInit {
 
   reloadAuctions() {
     this.isLoading = true;
+    this.errorMessage.set('');
     this.auctionResourceService.getAllAuctions().subscribe({
       next: (ai) => {
         this.auctionItems = ai;
@@ -46,8 +49,8 @@ export class AuctionsPageComponent implements OnInit {
       },
       error: (e: any) => {
         console.log('Mam error', e);
-        this.errorMessage = e.message;
-          this.isLoading = false;
+        this.errorMessage.set(e.message);
+        this.isLoading = false;
       },
       complete: () => {
         console.log('Stumień kompletny');
