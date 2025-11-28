@@ -38,6 +38,13 @@
       "imgUrl": "https://picsum.photos/id/2/600/600",
       "price": 5600,
       "title": "Laptop"
+    },
+    {
+      "id": "ef42",
+      "imgUrl": "https://picsum.photos/id/7/600/600",
+      "price": 10,
+      "title": "Torba",
+      "description": ""
     }
   ]
 }

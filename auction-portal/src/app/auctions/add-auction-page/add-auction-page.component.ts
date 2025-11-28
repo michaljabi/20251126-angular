@@ -4,6 +4,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JsonPipe, NgStyle } from '@angular/common';
 import { AuctionItem } from '../auction-item';
 import { AuctionsResourceService } from '../auctions-resource.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-auction-page',
@@ -117,7 +118,9 @@ import { AuctionsResourceService } from '../auctions-resource.service';
 export class AddAuctionPageComponent {
   private fb = inject(FormBuilder);
   // formularz budujemy tutaj:
-  private auctionResourceS = inject(AuctionsResourceService)
+  private auctionResourceS = inject(AuctionsResourceService);
+
+  private router = inject(Router);
 
   auctionForm = this.fb.nonNullable.group({
     title: ['', Validators.required],
@@ -145,7 +148,10 @@ export class AddAuctionPageComponent {
     this.auctionResourceS.addNewAuction(newAuctionItem).subscribe({
       next: (auction) => {
         // po wysyłce prawidłowej.
-        this.auctionForm.reset()
+        this.auctionForm.reset({
+          imgId: 10
+        })
+        this.router.navigate(['/auctions'])
       },
       error: (e) => {}
     })
