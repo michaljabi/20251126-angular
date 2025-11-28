@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faGavel, faPlus, faShoppingBasket, faUser, faSearch, faCartPlus, faEdit, faTag, faImage } from '@fortawesome/free-solid-svg-icons';
+import { faGavel, faPlus, faShoppingBasket, faUser, faSearch, faCartPlus, faEdit, faTag, faImage, faSun } from '@fortawesome/free-solid-svg-icons';
 // ng add @fortawesome/angular-fontawesome@3
 import { FormErrorBoxComponent } from './form-error-box/form-error-box.component';
 import {FormsModule} from '@angular/forms';
@@ -34,7 +34,8 @@ export class SharedModule {
       faCartPlus,
       faEdit,
       faTag,
-      faImage
+      faImage,
+      faSun
     );
   }
 }
