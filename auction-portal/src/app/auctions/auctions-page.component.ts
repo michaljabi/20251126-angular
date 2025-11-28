@@ -9,26 +9,50 @@ import { JsonPipe } from '@angular/common';
     <section>
       <h2>Lista naszych aukcji</h2>
       <div class="row">
-        @for(x of [1,2,3,4,5]; track x) {
-           <div class="col-12 col-sm-6 col-md-4 col-lg-3">[{{ x }}]</div>
+        <div class="col-12">
+          @if(errorMessage) {
+          <div class="alert alert-danger">Niestet wystąpił błąd... {{ errorMessage }}</div>
+          } @if(isLoading) {
+          <div class="alert alert-info">Ładuje aukcje...</div>
+          }
+        </div>
+        @for(auction of auctionItems; track auction.id) {
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+          {{ auction | json }}
+        </div>
         }
       </div>
-      --> {{ auctionItems | json }}
     </section>
   `,
   styles: ``,
 })
 export class AuctionsPageComponent implements OnInit {
-
-  private readonly auctionResourceService = inject(AuctionsResourceService)
+  private readonly auctionResourceService = inject(AuctionsResourceService);
   auctionItems: AuctionItem[] = [];
+  isLoading = false;
+  errorMessage = '';
 
   ngOnInit(): void {
     // tutaj pobieramy dane
+    this.reloadAuctions();
+  }
+
+  reloadAuctions() {
+    this.isLoading = true;
     this.auctionResourceService.getAllAuctions().subscribe({
       next: (ai) => {
         this.auctionItems = ai;
-      }
-    })
+        this.isLoading = false;
+      },
+      error: (e: any) => {
+        console.log('Mam error', e);
+        this.errorMessage = e.message;
+          this.isLoading = false;
+      },
+      complete: () => {
+        console.log('Stumień kompletny');
+        this.isLoading = false;
+      },
+    });
   }
 }
