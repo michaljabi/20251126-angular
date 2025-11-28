@@ -3,6 +3,7 @@ import { SharedModule } from '../../shared/shared.module';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JsonPipe, NgStyle } from '@angular/common';
 import { AuctionItem } from '../auction-item';
+import { AuctionsResourceService } from '../auctions-resource.service';
 
 @Component({
   selector: 'app-add-auction-page',
@@ -116,6 +117,7 @@ import { AuctionItem } from '../auction-item';
 export class AddAuctionPageComponent {
   private fb = inject(FormBuilder);
   // formularz budujemy tutaj:
+  private auctionResourceS = inject(AuctionsResourceService)
 
   auctionForm = this.fb.nonNullable.group({
     title: ['', Validators.required],
@@ -134,8 +136,18 @@ export class AddAuctionPageComponent {
       imgUrl: 'https://picsum.photos/id/' + this.auctionForm.value.imgId + '/600/600',
       price: this.auctionForm.value.price ?? 0,
       title: this.auctionForm.value.title ?? '',
+      description: this.auctionForm.value.description
     };
 
     console.log('Dane fromularza:', newAuctionItem);
+    
+    
+    this.auctionResourceS.addNewAuction(newAuctionItem).subscribe({
+      next: (auction) => {
+        // po wysyłce prawidłowej.
+        this.auctionForm.reset()
+      },
+      error: (e) => {}
+    })
   }
 }

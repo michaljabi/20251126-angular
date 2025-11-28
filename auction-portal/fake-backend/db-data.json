@@ -32,6 +32,12 @@
       "title": "Krowa",
       "imgUrl": "https://picsum.photos/id/200/600/600",
       "price": 800
+    },
+    {
+      "id": "a863",
+      "imgUrl": "https://picsum.photos/id/2/600/600",
+      "price": 5600,
+      "title": "Laptop"
     }
   ]
 }
