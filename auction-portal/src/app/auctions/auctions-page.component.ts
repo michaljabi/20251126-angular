@@ -16,10 +16,15 @@ import { AuctionCardComponent } from './auction-card/auction-card.component';
           <div class="alert alert-info">Ładuje aukcje...</div>
           }
         </div>
-        @for(au of auctionItems; track au.id) {
+        @for(au of auctionItems; track au.id; let p = $even) {
         <div class="col-12 col-sm-6 col-md-4 col-lg-3">
           <!-- tutaj daj komponent do wyświetlania jednej aukcji -->
-          <app-auction-card [auction]="au" />
+          <app-auction-card
+            (addToCart)="handleAddToCart($event)"
+            
+            [auction]="au"
+            [hasBlackWeekPromo]="p"
+          />
         </div>
         }
       </div>
@@ -56,5 +61,10 @@ export class AuctionsPageComponent implements OnInit {
         this.isLoading = false;
       },
     });
+  }
+
+  // przedrostek "handle" to pewna konwencja nazywania metod do odbierania eventów z template
+  handleAddToCart(auction: AuctionItem) {
+    console.log('Parent odbebrał aukcje', auction);
   }
 }
