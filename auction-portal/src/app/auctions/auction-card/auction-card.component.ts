@@ -1,9 +1,12 @@
 import { Component, input, output } from '@angular/core';
 import { AuctionItem } from '../auction-item';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '../../shared/shared.module';
+import { SearchBarComponent } from '../../shared/search-bar/search-bar.component';
 
 @Component({
   selector: 'app-auction-card',
-  imports: [],
+  imports: [SharedModule],
   template: `
     <div class="card mt-4">
       @let auct = auction();
@@ -17,7 +20,9 @@ import { AuctionItem } from '../auction-item';
         <div class="d-flex justify-content-between align-content-center">
           <strong> {{ auct.price }} zł</strong>
           @if(canAddToCart()) {
-          <button class="btn btn-primary" (click)="addToCart.emit(auct)">[ + ]</button>
+          <button class="btn btn-primary" (click)="addToCart.emit(auct)">
+            <fa-icon icon="cart-plus" />
+          </button>
           }
         </div>
       </div>
